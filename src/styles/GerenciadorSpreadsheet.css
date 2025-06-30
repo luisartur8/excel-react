@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@500&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.header-gerenciador {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(to right,
+      #001b40 0%,
+      #00122b 10%,
+      #000819 50%,
+      #00122b 90%,
+      #001b40 100%);
+}
+
+.header-titulo-imagem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1 1 auto;
+  min-width: 250px;
+}
+
+.header-gerenciador img {
+  height: 50px;
+}
+
+.header-gerenciador h1 {
+  color: white;
+  white-space: nowrap;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  min-width: 300px;
+}
+
+.radio-label {
+  cursor: pointer;
+  padding: 10px 22px;
+  border: 2.5px solid #4a90e2;
+  border-radius: 30px;
+  background-color: transparent;
+  color: #4a90e2;
+  font-size: 16px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+}
+
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-label.checked {
+  background-color: #4a90e2;
+  color: white;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+}
+
+.radio-label:not(.checked):hover {
+  background-color: rgba(74, 144, 226, 0.1);
+  color: #2f6abf;
+}
+
+@media (max-width: 730px) {
+  .radio-group {
+    justify-content: center;
+    flex: 1 1 100%;
+    margin-top: 10px;
+  }
+
+  .header-titulo-imagem {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .header-gerenciador h1 {
+    text-align: center;
+  }
+}

@@ -1,0 +1,78 @@
+.table-header-container {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background: #eee;
+  z-index: 10;
+  width: max-content;
+  border-bottom: 2px solid #999;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px solid #999;
+  position: relative;
+  min-width: 270px;
+}
+
+.toolbar button, .toolbar span {
+  width: 30px;
+  height: 30px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  transition: background-color 0.2s ease, border-radius 0.2s ease;
+}
+
+.toolbar button:hover, .toolbar span:hover {
+  border-radius: 50%;
+  background-color: grey;
+  cursor: pointer;
+}
+
+.toolbar select {
+  width: 90%;
+  padding: 4px 8px;
+  font-size: 14px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 24 24' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  max-width: 150px;
+  min-width: 150px;
+}
+
+.toolbar select:hover {
+  background-color: #e0e0e0;
+}
+
+.header-resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 3;
+  margin-right: -5px;
+  /* background-color: grey; */
+}
