@@ -9,12 +9,8 @@ export function getColMaxWidth(dataRef, colIndex, font = '14px Arial', min = 50,
   let max = min;
   for (let row = 0; row < dataRef.current.length; row++) {
     const value = dataRef.current[row][colIndex]?.value?.toString() ?? '';
-    console.log(value);
-
     const width = getTextWidth(value, font) + padding;
     if (width > max) max = width;
   }
-  console.log(max);
-
   return max;
 }

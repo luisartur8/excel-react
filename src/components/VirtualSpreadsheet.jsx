@@ -4,16 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Cell } from './TableCell';
 import { getColMaxWidth } from '../utils/calculateResizeColumn';
 import { TableHeader } from './TableHeader';
-import { setHeaders } from '../features/spreadsheet/spreadsheetSlice';
+import { setHasInitialized, setHeaders } from '../features/spreadsheet/spreadsheetSlice';
 
-export default function VirtualSpreadsheet() {
+export default function VirtualSpreadsheet({ data, setData, dataRef }) {
   const dispatch = useDispatch();
 
-  const { data: reduxData, font } = useSelector((state) => state.spreadsheet);
-  const [data, setData] = useState([]);
-  const dataRef = useRef(data);
-
-  const hasInitializedData = useRef(false);
+  const { data: reduxData, font, tipoPlanilha, hasInitialized } = useSelector((state) => state.spreadsheet);
 
   const [colWidths, setColWidths] = useState([]);
   const [renderTrigger, setRenderTrigger] = useState(0);
@@ -23,18 +19,19 @@ export default function VirtualSpreadsheet() {
   useEffect(() => {
     const cloned = reduxData.map((row) => row.map((cell) => ({ ...cell })));
     setData(cloned);
-  }, [reduxData]);
+  }, [reduxData, setData]);
 
   useEffect(() => {
     dataRef.current = data;
     setRenderTrigger((r) => r + 1);
 
-    if (!hasInitializedData.current && data.length > 0) {
-      dispatch(setHeaders(Array(data[0].length).fill('nome')));
-      setColWidths(Array(data[0].length).fill(270));
-      hasInitializedData.current = true;
+    if (!hasInitialized && data.length > 0) {
+      const selects = tipoPlanilha === 'lancamentos' ? 'cliente_nome' : 'nome';
+      dispatch(setHeaders(Array(reduxData[0].length).fill(selects)));
+      setColWidths(Array(reduxData[0].length).fill(270));
+      dispatch(setHasInitialized(true));
     }
-  }, [data, dispatch]);
+  }, [dataRef, data, reduxData, dispatch, hasInitialized, tipoPlanilha]);
 
   const rowVirtualizer = useVirtualizer({
     count: data.length,

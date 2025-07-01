@@ -12,6 +12,9 @@ const initialState = {
   modalValidateDate: {
     isOpen: false,
     colIndex: -1
+  },
+  modalBaixarPlanilha: {
+    isOpen: false
   }
 };
 
@@ -27,9 +30,12 @@ const modalsSlice = createSlice({
     },
     setModalValidateDate(state, action) {
       state.modalValidateDate = action.payload
+    },
+    setModalBaixarPlanilha(state, action) {
+      state.modalBaixarPlanilha = action.payload
     }
   },
 });
 
-export const { setModalDeleteColumn, setModalValidatePhone, setModalValidateDate } = modalsSlice.actions;
+export const { setModalDeleteColumn, setModalValidatePhone, setModalValidateDate, setModalBaixarPlanilha } = modalsSlice.actions;
 export default modalsSlice.reducer;

@@ -2,6 +2,7 @@ import { FaSortAlphaUp } from "react-icons/fa";
 import { FaSortAlphaDownAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setData } from "../../features/spreadsheet/spreadsheetSlice";
+import { COLORS } from "../../utils/colors";
 
 export function OrderButton(props) {
   const dispatch = useDispatch()
@@ -16,7 +17,7 @@ export function OrderButton(props) {
     data.forEach((row) => {
       const cellData = row[props.colIndex];
       if (cellData) {
-        if (cellData.backgroundColor === 'red') {
+        if (cellData.backgroundColor === COLORS.wrongCell) {
           ordemRed.push({ cellContent: cellData.value, row });
         } else {
           ordemNormal.push({ cellContent: cellData.value, row });

@@ -4,7 +4,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  overflow-y: hidden;
+  overflow: hidden;
   height: 100%;
   font-family: 'Roboto Condensed', sans-serif;
   box-sizing: border-box;
@@ -110,4 +110,29 @@ body {
   .header-gerenciador h1 {
     text-align: center;
   }
+}
+
+.main-layout {
+  display: flex;
+  height: calc(100vh - 80px);
+  width: 100%;
+  overflow: hidden;
+}
+
+.sidebar {
+  background: linear-gradient(to bottom,
+      #001b40 0%,
+      #00122b 50%,
+      #000819 100%);
+  border-right: 1px solid #ccc;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }

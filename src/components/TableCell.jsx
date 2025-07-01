@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { COLORS } from "../utils/colors";
 
 export const Cell = React.memo(function Cell({ rowIndex, colIndex, dataRef, colWidth }) {
   const inputRef = useRef(null);
@@ -43,7 +44,7 @@ export const Cell = React.memo(function Cell({ rowIndex, colIndex, dataRef, colW
           height: '30px',
           border: '1px solid #ccc',
           boxSizing: 'border-box',
-          backgroundColor: reduxData?.backgroundColor || 'white',
+          backgroundColor: reduxData?.backgroundColor || COLORS.defaultBackgroundCell,
         }}
       />
     </div>

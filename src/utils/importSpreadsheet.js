@@ -19,13 +19,14 @@ export async function importSpreadsheet(file) {
     reader.onload = (e) => {
       try {
         const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
+        const workbook = XLSX.read(data, { type: 'array', cellDates: true });
 
         const sheetName = workbook.SheetNames[0];
         const worksheet = workbook.Sheets[sheetName];
 
         const parsed = XLSX.utils.sheet_to_json(worksheet, {
           raw: false, // Todos os dados que chegarem serão uma string.
+          // dateNF: 'dd/mm/yyyy',
           header: 1, // Considera a primeira linha como o header.
           defval: "" // Celulas null se tornam uma string vazia.
         });
@@ -37,7 +38,7 @@ export async function importSpreadsheet(file) {
           }))
         );
 
-        resolve({ sheetName, worbookName: file.name, result });
+        resolve({ sheetName, workbookName: file.name, result });
       } catch (error) {
         reject(error);
       }

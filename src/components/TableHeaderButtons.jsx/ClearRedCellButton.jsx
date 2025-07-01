@@ -1,6 +1,7 @@
 import { TbColumnRemove } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { setData } from "../../features/spreadsheet/spreadsheetSlice";
+import { COLORS } from "../../utils/colors";
 
 export function ClearRedCellButton(props) {
   const dispatch = useDispatch();
@@ -12,8 +13,8 @@ export function ClearRedCellButton(props) {
       let updatedRow = [...row];
       let cellData = updatedRow[props.colIndex];
 
-      if (cellData && cellData.backgroundColor === 'red') {
-        updatedRow[props.colIndex] = { value: "", backgroundColor: 'white' }
+      if (cellData && cellData.backgroundColor === COLORS.wrongCell) {
+        updatedRow[props.colIndex] = { value: "", backgroundColor: COLORS.defaultBackgroundCell }
       }
 
       return updatedRow;

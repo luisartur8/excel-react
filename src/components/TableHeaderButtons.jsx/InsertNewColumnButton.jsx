@@ -2,6 +2,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { setData, setHeaders } from "../../features/spreadsheet/spreadsheetSlice";
+import { COLORS } from "../../utils/colors";
 
 export function InsertNewColumnButton(props) {
   const dispatch = useDispatch()
@@ -9,7 +10,7 @@ export function InsertNewColumnButton(props) {
   const { headers: reduxHeaders, tipoPlanilha, centralizedConfig } = useSelector((state) => state.spreadsheet);
 
   const insertNewColumn = (dataRef, direction, colIndex) => {
-    const emptyCell = { value: '', backgroundColor: 'white' };
+    const emptyCell = { value: '', backgroundColor: COLORS.defaultBackgroundCell };
 
     const updatedData = dataRef.current.map((row) => {
       const newRow = [...row];

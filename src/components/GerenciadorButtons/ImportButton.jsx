@@ -13,8 +13,8 @@ export default function ImportButton() {
   const handleFile = async (file) => {
     if (!file) return;
     try {
-      const { sheetName, worbookName, result } = await importSpreadsheet(file);
-      dispatch(setSheetName({ worbookName, sheetName }));
+      const { sheetName, workbookName, result } = await importSpreadsheet(file);
+      dispatch(setSheetName({ workbookName, sheetName }));
       dispatch(setData(result));
     } catch (error) {
       console.error('Erro ao carregar a planilha:', error);
