@@ -9,11 +9,10 @@ import { setHeaders } from '../features/spreadsheet/spreadsheetSlice';
 export default function VirtualSpreadsheet() {
   const dispatch = useDispatch();
 
-  // Estado da tabela
+  const { data: reduxData, font } = useSelector((state) => state.spreadsheet);
   const [data, setData] = useState([]);
   const dataRef = useRef(data);
 
-  // Controla se já inicializou os headers e colWidths
   const hasInitializedData = useRef(false);
 
   const [colWidths, setColWidths] = useState([]);
@@ -21,18 +20,13 @@ export default function VirtualSpreadsheet() {
 
   const parentRef = useRef();
 
-  // Pega dados do redux
-  const { data: reduxData, font } = useSelector((state) => state.spreadsheet);
-
-  // Sincroniza data com reduxData
   useEffect(() => {
     const cloned = reduxData.map((row) => row.map((cell) => ({ ...cell })));
     setData(cloned);
   }, [reduxData]);
 
-  // Sincroniza dataRef com data
   useEffect(() => {
-    dataRef.current = data; // ← Agora está apontando para uma cópia mutável
+    dataRef.current = data;
     setRenderTrigger((r) => r + 1);
 
     if (!hasInitializedData.current && data.length > 0) {
@@ -42,13 +36,11 @@ export default function VirtualSpreadsheet() {
     }
   }, [data, dispatch]);
 
-
-  // Configuração do virtualizer para as linhas
   const rowVirtualizer = useVirtualizer({
     count: data.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => 35,
-    overscan: 10,
+    overscan: 40,
   });
 
   return (
@@ -70,8 +62,7 @@ export default function VirtualSpreadsheet() {
           getColMaxWidth={getColMaxWidth}
           font={font}
         />
-
-        {/* Corpo da tabela */}
+        {/* BODY */}
         <div
           key={renderTrigger}
           style={{
@@ -95,7 +86,7 @@ export default function VirtualSpreadsheet() {
               >
                 {data[rowIndex].map((_, colIndex) => (
                   <Cell
-                    key={`${rowIndex}-${colIndex}`} // chave única por célula
+                    key={`${rowIndex}-${colIndex}`}
                     rowIndex={rowIndex}
                     colIndex={colIndex}
                     dataRef={dataRef}

@@ -9,6 +9,8 @@ import { OrderButton } from "./TableHeaderButtons.jsx/OrderButton";
 
 import "../styles/TableHeader.css";
 import { ModalDeleteColumn } from "./modals/ModalDeleteColumn";
+import { ModalValidatePhone } from "./modals/ModalValidatePhone";
+import { ModalValidateDate } from "./modals/ModalValidateDate";
 
 export function TableHeader({ dataRef, colWidths, setColWidths, getColMaxWidth, font }) {
   const dispatch = useDispatch()
@@ -74,9 +76,9 @@ export function TableHeader({ dataRef, colWidths, setColWidths, getColMaxWidth, 
                 <InsertNewColumnButton dataRef={dataRef} direction={'left'} colIndex={colIndex} setColWidths={setColWidths} />
                 <DeleteColumnButton colIndex={colIndex} />
                 <ValidateColumnButton dataRef={dataRef} colIndex={colIndex} />
-                <ClearRedCellButton />
+                <ClearRedCellButton dataRef={dataRef} colIndex={colIndex} />
                 <SearchReplaceButton />
-                <OrderButton />
+                <OrderButton dataRef={dataRef} colIndex={colIndex} />
                 <InsertNewColumnButton dataRef={dataRef} direction={'right'} colIndex={colIndex} setColWidths={setColWidths} />
               </div>
               <select
@@ -99,6 +101,8 @@ export function TableHeader({ dataRef, colWidths, setColWidths, getColMaxWidth, 
         </div>
       )}
       <ModalDeleteColumn dataRef={dataRef} setColWidths={setColWidths} />
+      <ModalValidatePhone dataRef={dataRef} />
+      <ModalValidateDate dataRef={dataRef} />
     </div>
   )
 }

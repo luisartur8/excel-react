@@ -1,10 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
 export const Cell = React.memo(function Cell({ rowIndex, colIndex, dataRef, colWidth }) {
   const inputRef = useRef(null);
-  const cell = dataRef.current?.[rowIndex]?.[colIndex];
 
-  const [localValue, setLocalValue] = useState(() => cell?.value || '');
+  const reduxData = useSelector((state) => {
+    const data = state.spreadsheet.data;
+    return data?.[rowIndex]?.[colIndex] ?? '';
+  });
+
+  const [localValue, setLocalValue] = useState(() => reduxData?.value || '');
 
   useEffect(() => {
     const newValue = dataRef.current?.[rowIndex]?.[colIndex]?.value || '';
@@ -38,7 +43,7 @@ export const Cell = React.memo(function Cell({ rowIndex, colIndex, dataRef, colW
           height: '30px',
           border: '1px solid #ccc',
           boxSizing: 'border-box',
-          backgroundColor: cell?.backgroundColor || 'white',
+          backgroundColor: reduxData?.backgroundColor || 'white',
         }}
       />
     </div>

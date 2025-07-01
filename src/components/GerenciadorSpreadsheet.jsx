@@ -2,6 +2,7 @@ import VirtualSpreadsheet from "./VirtualSpreadsheet";
 import { useDispatch, useSelector } from "react-redux";
 import { setTipoPlanilha } from "../features/spreadsheet/spreadsheetSlice";
 
+import iconHeaderNummus from '../assets/nummus-logo.png';
 import "../styles/GerenciadorSpreadsheet.css"
 import { NoSpreadsheet } from "./NoSpreadsheet";
 
@@ -16,7 +17,7 @@ export default function GerenciadorSpreadsheet() {
     <>
       <header className="header-gerenciador">
         <div className="header-titulo-imagem">
-          <img src="https://patricktulio.com.br/bk-nummus/wp-content/uploads/2023/03/lp-cashback.png" alt="logo-nummus" />
+          <img src={iconHeaderNummus} alt="logo-nummus" />
           <h1>Gerenciador de Planilhas</h1>
         </div>
         <div className="radio-group">

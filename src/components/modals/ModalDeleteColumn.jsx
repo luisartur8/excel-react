@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setData, setHeaders } from "../../features/spreadsheet/spreadsheetSlice";
 import { setModalDeleteColumn } from "../../features/modals/modalsSlice";
+import { useEffect } from "react";
+
+import "../../styles/ModalDeleteColumn.css";
+import { centerModal, makeDraggable } from "../../utils/arrastarModais";
 
 export function ModalDeleteColumn(props) {
   const dispatch = useDispatch();
@@ -8,9 +12,18 @@ export function ModalDeleteColumn(props) {
   const { headers: reduxHeaders } = useSelector((state) => state.spreadsheet);
   const { modalDeleteColumn } = useSelector((state) => state.modals);
 
-  if (!modalDeleteColumn.isOpen) return null;
-
   const { colIndex } = modalDeleteColumn;
+
+  useEffect(() => {
+    if (modalDeleteColumn.isOpen) {
+      centerModal('.modal-delete-column-content');
+      document.getElementById("modalDeleteColumn").focus();
+    }
+  }, [modalDeleteColumn]);
+
+  useEffect(() => {
+    makeDraggable(".modal-delete-column-content", ".dragHandle");
+  }, []);
 
   const onConfirm = () => {
     const updatedData = props.dataRef.current.map((row) => {
@@ -37,49 +50,34 @@ export function ModalDeleteColumn(props) {
   const onCancel = () => {
     dispatch(setModalDeleteColumn({ isOpen: false, colIndex: 0 }));
   };
-  return (
-    <>
-      <div
-        style={{
-          position: "fixed",
-          top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: "rgba(0,0,0,0.5)",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: 1000,
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "white",
-            padding: "20px",
-            borderRadius: "8px",
-            maxWidth: "400px",
-            width: "90%",
-            boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
-            textAlign: "center",
-          }}
-        >
-          <h2>Excluir Coluna</h2>
-          <p>Tem certeza que deseja excluir esta coluna?</p>
 
-          <div style={{ marginTop: "20px", display: "flex", justifyContent: "space-around" }}>
-            <button
-              style={{ padding: "8px 16px", backgroundColor: "#d9534f", color: "white", border: "none", borderRadius: "4px" }}
-              onClick={onConfirm}
-            >
-              Confirmar
-            </button>
-            <button
-              style={{ padding: "8px 16px", backgroundColor: "#6c757d", color: "white", border: "none", borderRadius: "4px" }}
-              onClick={onCancel}
-            >
-              Cancelar
-            </button>
-          </div>
+  const actionsByKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onConfirm();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      onCancel();
+    }
+  };
+
+  return (
+    <div
+      id="modalDeleteColumn"
+      tabIndex="-1"
+      onKeyDown={actionsByKeyPress}
+      style={{ display: modalDeleteColumn.isOpen ? "flex" : "none" }}
+    >
+      <div className="modal-delete-column-content draggable-modal">
+        <div id="modalHeaderDeleteColumn" className="dragHandle">
+        </div>
+        <h2>Excluir Coluna</h2>
+        <p>Tem certeza que deseja excluir esta coluna?</p>
+        <div className="modal-delete-column-buttons">
+          <button className="btn-confirm" onClick={onConfirm}>Confirmar</button>
+          <button className="btn-cancel" onClick={onCancel}>Cancelar</button>
         </div>
       </div>
-    </>
-  );
+    </div>
+  )
 }

@@ -23,6 +23,8 @@ export function ValidateColumnButton(props) {
     }
 
     const updatedData = executarValidacao([...props.dataRef.current], reduxHeaders[colIndex], colIndex)
+    console.log(updatedData);
+
     dispatch(setData(updatedData))
   }
 

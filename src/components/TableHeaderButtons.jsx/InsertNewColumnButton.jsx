@@ -9,7 +9,7 @@ export function InsertNewColumnButton(props) {
   const { headers: reduxHeaders, tipoPlanilha, centralizedConfig } = useSelector((state) => state.spreadsheet);
 
   const insertNewColumn = (dataRef, direction, colIndex) => {
-    const emptyCell = { value: '', style: { backgroundColor: 'white' } };
+    const emptyCell = { value: '', backgroundColor: 'white' };
 
     const updatedData = dataRef.current.map((row) => {
       const newRow = [...row];
