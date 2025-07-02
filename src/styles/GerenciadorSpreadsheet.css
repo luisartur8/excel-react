@@ -136,3 +136,31 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.col-lines {
+  width: 40px;
+  min-width: 40px;
+  border-right: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  font-weight: bold;
+}
+
+.col-delete-line {
+  width: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff0f0;
+}
+
+.col-delete-line button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: red;
+  font-weight: bold;
+}

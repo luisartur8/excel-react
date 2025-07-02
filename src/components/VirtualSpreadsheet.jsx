@@ -80,15 +80,30 @@ export default function VirtualSpreadsheet({ data, setData, dataRef, colWidths, 
                   display: 'flex',
                 }}
               >
-                {data[rowIndex].map((_, colIndex) => (
-                  <Cell
-                    key={`${rowIndex}-${colIndex}`}
-                    rowIndex={rowIndex}
-                    colIndex={colIndex}
-                    dataRef={dataRef}
-                    colWidth={colWidths[colIndex]}
-                  />
-                ))}
+                <>
+                  <div className='col-lines'>
+                    {rowIndex + 1}
+                  </div>
+                  <div className='col-delete-line'>
+                    <button
+                      onClick={() => {
+                        setData((prev) => prev.filter((_, i) => i !== rowIndex));
+                      }}
+                    >
+                      ✖
+                    </button>
+                  </div>
+
+                  {data[rowIndex].map((_, colIndex) => (
+                    <Cell
+                      key={`${rowIndex}-${colIndex}`}
+                      rowIndex={rowIndex}
+                      colIndex={colIndex}
+                      dataRef={dataRef}
+                      colWidth={colWidths[colIndex]}
+                    />
+                  ))}
+                </>
               </div>
             );
           })}

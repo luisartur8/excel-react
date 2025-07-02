@@ -64,6 +64,7 @@ export function ModalDeleteColumn(props) {
   return (
     <div
       id="modalDeleteColumn"
+      className="modal-delete-column"
       tabIndex="-1"
       onKeyDown={actionsByKeyPress}
       style={{ display: modalDeleteColumn.isOpen ? "flex" : "none" }}

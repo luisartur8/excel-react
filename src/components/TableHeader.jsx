@@ -64,6 +64,8 @@ export function TableHeader({ dataRef, colWidths, setColWidths, getColMaxWidth, 
 
   return (
     <div className="table-header-container" >
+      <div className='col-lines'/>
+      <div className='col-lines'/>
       {dataRef.current.length > 0 && dataRef.current[0] && (
         <div style={{ display: 'flex', position: 'sticky', top: 0, background: '#eee', zIndex: 2 }}>
           {reduxData[0].map((_, colIndex) => (
