@@ -9,7 +9,7 @@ import { ModalRemoveLinhasCheckboxOportunidade } from "./ModalRemoveLinhasCheckb
 import { ModalRemoveLinhasCheckboxProdutos } from "./ModalRemoveLinhasCheckboxProdutos";
 import { ModalRemoveLinhasMesmoTempo } from "./ModalRemoveLinhasMesmoTempo";
 
-import "../../../styles/modalRemoveLinhas.css"
+import "../../../styles/ModalRemoveLinhas.css"
 
 export function ModalRemoveLinhas(props) {
   const dispatch = useDispatch()
