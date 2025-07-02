@@ -48,3 +48,87 @@ export async function importSpreadsheet(file) {
     reader.readAsArrayBuffer(file);
   });
 }
+
+export const exampleSpreadsheet = [
+  [
+    { value: 'nome', backgroundColor: 'white' },
+    { value: 'ddd', backgroundColor: 'white' },
+    { value: 'telefone', backgroundColor: 'white' },
+    { value: 'cpf_cnpj', backgroundColor: 'white' },
+    { value: 'data_nascimento', backgroundColor: 'white' },
+    { value: 'genero', backgroundColor: 'white' },
+    { value: 'email', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'João Silva', backgroundColor: 'white' },
+    { value: '', backgroundColor: 'white' },
+    { value: '48 88888888', backgroundColor: 'white' },
+    { value: '59581164014', backgroundColor: 'white' },
+    { value: '3/20/1989', backgroundColor: 'white' },
+    { value: 'feminino', backgroundColor: 'white' },
+    { value: 'teste__ola@gmail.com', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'Carlos Eduard0', backgroundColor: 'white' },
+    { value: '', backgroundColor: 'white' },
+    { value: '48 9 88888888', backgroundColor: 'white' },
+    { value: '552.859.550-92', backgroundColor: 'white' },
+    { value: '4/5/02', backgroundColor: 'white' },
+    { value: 'masculino', backgroundColor: 'white' },
+    { value: 'joao.silva@gmail.com', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'Rafael_Martins', backgroundColor: 'white' },
+    { value: '48', backgroundColor: 'white' },
+    { value: '98888-8888', backgroundColor: 'white' },
+    { value: '12345678891', backgroundColor: 'white' },
+    { value: '12/31/1899', backgroundColor: 'white' },
+    { value: 'f', backgroundColor: 'white' },
+    { value: 'joao.silva@gmail.con', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'L+cas Almeida', backgroundColor: 'white' },
+    { value: '', backgroundColor: 'white' },
+    { value: '23 9 88888888', backgroundColor: 'white' },
+    { value: '59581164014', backgroundColor: 'white' },
+    { value: '12/31/1899', backgroundColor: 'white' },
+    { value: 'm', backgroundColor: 'white' },
+    { value: 'joao.silva@gmail.com', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'João Silva', backgroundColor: 'white' },
+    { value: '48', backgroundColor: 'white' },
+    { value: '98888-8888', backgroundColor: 'white' },
+    { value: '552.859.550-92', backgroundColor: 'white' },
+    { value: '3/20/1989', backgroundColor: 'white' },
+    { value: 'f', backgroundColor: 'white' },
+    { value: 'maria_oliveira123@yahoo.com.br', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'àáãâ', backgroundColor: 'white' },
+    { value: '23', backgroundColor: 'white' },
+    { value: '98888-8888', backgroundColor: 'white' },
+    { value: '12345678891', backgroundColor: 'white' },
+    { value: '4/5/02', backgroundColor: 'white' },
+    { value: 'm', backgroundColor: 'white' },
+    { value: 'carlos-martins@outlook.com', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'Rafael Martins', backgroundColor: 'white' },
+    { value: '', backgroundColor: 'white' },
+    { value: '48988 8 8 8 8 8 8', backgroundColor: 'white' },
+    { value: '92.389.070/0001-00', backgroundColor: 'white' },
+    { value: '3/20/1989', backgroundColor: 'white' },
+    { value: 'feminino', backgroundColor: 'white' },
+    { value: 'ana.paula@empresa.com', backgroundColor: 'white' }
+  ],
+  [
+    { value: 'Lucas Almeida', backgroundColor: 'white' },
+    { value: '', backgroundColor: 'white' },
+    { value: '', backgroundColor: 'white' },
+    { value: '92389070000100', backgroundColor: 'white' },
+    { value: '4/5/02', backgroundColor: 'white' },
+    { value: 'masculino', backgroundColor: 'white' },
+    { value: 'teste.email+123@dominio.org', backgroundColor: 'white' }
+  ]
+];

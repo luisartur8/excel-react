@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useRef, useState } from 'react';
-import { importSpreadsheet } from '../../utils/importSpreadsheet';
+import { exampleSpreadsheet, importSpreadsheet } from '../../utils/importSpreadsheet';
 import { setData, setSheetName } from '../../features/spreadsheet/spreadsheetSlice';
 
 import importFile from '../../assets/import-file.png';
@@ -47,6 +47,12 @@ export default function ImportButton() {
     setIsDragging(false);
   };
 
+  const insertExample = (e) => {
+    e.preventDefault()
+    dispatch(setSheetName({ workbookName: 'workbookName', sheetName: 'sheetName' }));
+    dispatch(setData(exampleSpreadsheet));
+  }
+
   return (
     <div
       className={`dropzone-container ${isDragging ? 'drag-over' : ''}`}
@@ -60,7 +66,7 @@ export default function ImportButton() {
       >
         <img src={importFile} alt="Importar Planilha" className="dropzone-icon" />
         <p>
-          <strong>Selecione um arquivo</strong> ou arraste ele aqui.
+          <strong>Selecione um arquivo</strong> ou arraste ele aqui. <strong style={{ zIndex: '999' }} onClick={insertExample}>[Inserir exemplo]</strong>
         </p>
       </label>
       <input
