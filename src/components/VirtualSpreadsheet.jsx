@@ -6,12 +6,11 @@ import { getColMaxWidth } from '../utils/calculateResizeColumn';
 import { TableHeader } from './TableHeader';
 import { setHasInitialized, setHeaders } from '../features/spreadsheet/spreadsheetSlice';
 
-export default function VirtualSpreadsheet({ data, setData, dataRef }) {
+export default function VirtualSpreadsheet({ data, setData, dataRef, colWidths, setColWidths }) {
   const dispatch = useDispatch();
 
   const { data: reduxData, font, tipoPlanilha, hasInitialized } = useSelector((state) => state.spreadsheet);
 
-  const [colWidths, setColWidths] = useState([]);
   const [renderTrigger, setRenderTrigger] = useState(0);
 
   const parentRef = useRef();
@@ -31,7 +30,7 @@ export default function VirtualSpreadsheet({ data, setData, dataRef }) {
       setColWidths(Array(reduxData[0].length).fill(270));
       dispatch(setHasInitialized(true));
     }
-  }, [dataRef, data, reduxData, dispatch, hasInitialized, tipoPlanilha]);
+  }, [dataRef, data, reduxData, dispatch, hasInitialized, tipoPlanilha, setColWidths]);
 
   const rowVirtualizer = useVirtualizer({
     count: data.length,

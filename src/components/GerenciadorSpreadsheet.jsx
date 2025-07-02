@@ -13,6 +13,7 @@ export default function GerenciadorSpreadsheet() {
 
   const { data: reduxData, headers: reduxHeaders, tipoPlanilha } = useSelector((state) => state.spreadsheet);
 
+  const [colWidths, setColWidths] = useState([]);
   const [data, setData] = useState([]);
   const dataRef = useRef(data);
 
@@ -64,10 +65,10 @@ export default function GerenciadorSpreadsheet() {
       ) : (
         <div className="main-layout">
           <div className="sidebar">
-            <LateralBar data={data} setData={setData} dataRef={dataRef} />
+            <LateralBar data={data} setData={setData} dataRef={dataRef} colWidths={colWidths} setColWidths={setColWidths} />
           </div>
           <div className="main-content">
-            <VirtualSpreadsheet data={data} setData={setData} dataRef={dataRef} />
+            <VirtualSpreadsheet data={data} setData={setData} dataRef={dataRef} colWidths={colWidths} setColWidths={setColWidths} />
           </div>
         </div>
       )}

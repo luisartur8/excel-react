@@ -1,10 +1,13 @@
 import { useDispatch } from "react-redux";
 import "../styles/LateralBar.css";
-import { FaDownload, FaTrash, FaFileExport, FaPhone, FaMinusCircle, FaRegCopy } from "react-icons/fa";
+import { FaDownload, FaTrash, FaFileExport, FaMinusCircle } from "react-icons/fa";
 import { setData, setHasInitialized } from "../features/spreadsheet/spreadsheetSlice";
-import { setModalBaixarPlanilha } from "../features/modals/modalsSlice";
+import { setModalBaixarPlanilha, setModalRemoveLinhas } from "../features/modals/modalsSlice";
+import { JuntarDDDTelefoneButton } from "./GerenciadorButtons/JuntarDDDTelefoneButton";
+import { ModeloPadraoButton } from "./GerenciadorButtons/ModeloPadraoButton";
+import { MesclarColunasButton } from "./GerenciadorButtons/MesclarColunasButton";
 
-export function LateralBar() {
+export function LateralBar(props) {
   const dispatch = useDispatch()
 
   const apagarPlanilha = () => {
@@ -26,18 +29,17 @@ export function LateralBar() {
         <FaFileExport className="sidebar-icon" />
         Exportar planilha
       </button>
-      <button className="sidebar-btn">
-        <FaPhone className="sidebar-icon" />
-        DDD + Telefone
-      </button>
-      <button className="sidebar-btn">
+
+      <JuntarDDDTelefoneButton dataRef={props.dataRef} />
+
+      <button className="sidebar-btn" onClick={() => dispatch(setModalRemoveLinhas({ isOpen: true }))}>
         <FaMinusCircle className="sidebar-icon" />
         Remover linhas
       </button>
-      <button className="sidebar-btn">
-        <FaRegCopy className="sidebar-icon" />
-        Modelo padrão
-      </button>
+
+      <ModeloPadraoButton dataRef={props.dataRef} setColWidths={props.setColWidths} />
+
+      <MesclarColunasButton dataRef={props.dataRef} />
     </aside>
   );
 }

@@ -70,13 +70,18 @@ Uma aplicação que auxilia na validação e manipulação de diversos tipos de 
 ## Desenvolvedor
 - ![github](https://skillicons.dev/icons?i=github&theme=light) @luisartur8
 
+## Dica
+- Se alguem quiser mexer na tabela, pegar os dados mais atuais de "dataRef" declarado em GereciadorSpreadsheet.jsx
+- Pode mutar o dataRef diretamente se quiser, ou criar um clone [...dataRef.current] e depois atualizar a tabela usando dispatch(setData(dataRefClone))
+
 ## Conclusão
 
 Este projeto tem como objetivo melhorar a eficiência em arrumar e validar tipos específicos de planilhas. Com isso, conseguimos aumentar a velocidade de correção das planilhas.
 
 Embora já tenha implementado as funcionalidades principais, há muitos pontos de melhoria que podem ser adicionados, como a 
-implementeação de testes automatizados e melhora no CSS.
+implementeação de testes automatizados, melhora no CSS e documentação do código.
 
 **Próximos passos:**
 - Atualizar o CSS.
 - Criar mais testes automatizados e atualizar os atuais.
+- Comentar o código novamente nessa nova versão do gerenciador.

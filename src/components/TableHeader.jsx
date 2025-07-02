@@ -12,6 +12,7 @@ import { ModalDeleteColumn } from "./modals/ModalDeleteColumn";
 import { ModalValidatePhone } from "./modals/ModalValidatePhone";
 import { ModalValidateDate } from "./modals/ModalValidateDate";
 import { ModalBaixarPlanilha } from "./modals/ModalBaixarPlanilha";
+import { ModalRemoveLinhas } from "./modals/ModalRemoveLinhas/ModalRemoveLinhas";
 
 export function TableHeader({ dataRef, colWidths, setColWidths, getColMaxWidth, font }) {
   const dispatch = useDispatch()
@@ -105,6 +106,7 @@ export function TableHeader({ dataRef, colWidths, setColWidths, getColMaxWidth, 
       <ModalValidatePhone dataRef={dataRef} />
       <ModalValidateDate dataRef={dataRef} />
       <ModalBaixarPlanilha dataRef={dataRef} />
+      <ModalRemoveLinhas dataRef={dataRef} />
     </div>
   )
 }

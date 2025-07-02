@@ -11,9 +11,9 @@ const initialState = {
   tipoPlanilha: 'clientes',
   hasInitialized: false,
   optionsByTipoPlanilha: {
-    'clientes': ['nome', 'telefone', 'cpf_cnpj', 'data_nascimento', 'genero', 'email', 'anotacao'],
-    'lancamentos': ['cliente_nome', 'cliente_telefone', 'cliente_cpf_cnpj', 'valor_venda', 'valor_resgate', 'anotacao_venda', 'item_venda', 'data_lancamento', 'nome_vendedor', 'codigo_vendedor'],
-    'oportunidade': ['nome', 'telefone', 'cpf_cnpj', 'data_nascimento', 'genero', 'email', 'anotacao', 'bonus_valor', 'bonus_validade'],
+    'clientes': ['nome', 'telefone', 'cpf_cnpj', 'data_nascimento', 'genero', 'email', 'anotacao', 'DDD'],
+    'lancamentos': ['cliente_nome', 'cliente_telefone', 'cliente_cpf_cnpj', 'valor_venda', 'valor_resgate', 'anotacao_venda', 'item_venda', 'data_lancamento', 'nome_vendedor', 'codigo_vendedor', 'DDD'],
+    'oportunidade': ['nome', 'telefone', 'cpf_cnpj', 'data_nascimento', 'genero', 'email', 'anotacao', 'DDD', 'bonus_valor', 'bonus_validade'],
     'produtos': ['codigo', 'nome', 'percentual', 'validade'],
   },
   centralizedConfig: {

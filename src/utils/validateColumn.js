@@ -1,3 +1,4 @@
+import { COLORS } from "./colors";
 import { validarCelula } from "./validacao";
 
 export function executarValidacao(reduxData, selectValue, columnIndex, cb, ddd, formatoOriginal, formatoFinal) {
@@ -12,8 +13,8 @@ export function executarValidacao(reduxData, selectValue, columnIndex, cb, ddd, 
 
       newRow[columnIndex] =
         correctedValue === '' && originalValue !== ''
-          ? { value: originalValue, backgroundColor: 'red' }
-          : { value: correctedValue, backgroundColor: 'white' };
+          ? { value: originalValue, backgroundColor: COLORS.wrongCell }
+          : { value: correctedValue, backgroundColor: COLORS.defaultBackgroundCell };
     }
 
     return newRow;

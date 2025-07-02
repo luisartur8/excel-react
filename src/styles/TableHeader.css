@@ -22,7 +22,8 @@
   min-width: 270px;
 }
 
-.toolbar button, .toolbar span {
+.toolbar button,
+.toolbar span {
   width: 30px;
   height: 30px;
   border: none;
@@ -34,7 +35,8 @@
   transition: background-color 0.2s ease, border-radius 0.2s ease;
 }
 
-.toolbar button:hover, .toolbar span:hover {
+.toolbar button:hover,
+.toolbar span:hover {
   border-radius: 50%;
   background-color: grey;
   cursor: pointer;
@@ -74,5 +76,4 @@
   cursor: col-resize;
   z-index: 3;
   margin-right: -5px;
-  /* background-color: grey; */
 }
