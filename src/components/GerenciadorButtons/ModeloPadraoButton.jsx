@@ -51,9 +51,9 @@ export function ModeloPadraoButton(props) {
       dispatch(setHeaders(['nome', 'telefone', 'cpf_cnpj', 'data_nascimento', 'genero', 'email', 'anotacao']))
     } else if (tipoPlanilha === 'lancamentos') {
       ordem = [
-        ...(Array.isArray(indexHeader.nome) ? indexHeader.nome : [-1]),
-        ...(Array.isArray(indexHeader.telefone) ? indexHeader.telefone : [-1]),
-        ...(Array.isArray(indexHeader.cpf_cnpj) ? indexHeader.cpf_cnpj : [-1]),
+        ...(Array.isArray(indexHeader.cliente_nome) ? indexHeader.cliente_nome : [-1]),
+        ...(Array.isArray(indexHeader.cliente_telefone) ? indexHeader.cliente_telefone : [-1]),
+        ...(Array.isArray(indexHeader.cliente_cpf_cnpj) ? indexHeader.cliente_cpf_cnpj : [-1]),
         ...(Array.isArray(indexHeader.valor_venda) ? indexHeader.valor_venda : [-1]),
         ...(Array.isArray(indexHeader.valor_resgate) ? indexHeader.valor_resgate : [-1]),
         ...(Array.isArray(indexHeader.anotacao_venda) ? indexHeader.anotacao_venda : [-1]),
@@ -63,7 +63,7 @@ export function ModeloPadraoButton(props) {
         ...(Array.isArray(indexHeader.codigo_vendedor) ? indexHeader.codigo_vendedor : [-1])
       ];
 
-      dispatch(setHeaders(['nome', 'telefone', 'cpf_cnpj', 'valor_venda', 'valor_resgate', 'anotacao_venda', 'item_venda', 'data_lancamento', 'nome_vendedor', 'codigo_vendedor']));
+      dispatch(setHeaders(['cliente_nome', 'cliente_telefone', 'cliente_cpf_cnpj', 'valor_venda', 'valor_resgate', 'anotacao_venda', 'item_venda', 'data_lancamento', 'nome_vendedor', 'codigo_vendedor']));
     } else if (tipoPlanilha === 'oportunidade') {
       ordem = [
         ...(Array.isArray(indexHeader.nome) ? indexHeader.nome : [-1]),

@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useRef, useState } from 'react';
 import { exampleSpreadsheet, importSpreadsheet } from '../../utils/importSpreadsheet';
-import { setData, setSheetName } from '../../features/spreadsheet/spreadsheetSlice';
+import { setData, setSheetName, setTipoPlanilha } from '../../features/spreadsheet/spreadsheetSlice';
 
 import importFile from '../../assets/import-file.png';
 
@@ -48,7 +48,8 @@ export default function ImportButton() {
   };
 
   const insertExample = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    dispatch(setTipoPlanilha('clientes'));
     dispatch(setSheetName({ workbookName: 'workbookName', sheetName: 'sheetName' }));
     dispatch(setData(exampleSpreadsheet));
   }
