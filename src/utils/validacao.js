@@ -36,16 +36,29 @@ const sanitizeNumber = valor => valor.replace(/[^0-9]/g, "").replace(/^0+/, "");
 const aplicarMascaraTelefone = valor => valor.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
 const aplicarMascaraCPF = valor => valor.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
 const aplicarMascaraCNPJ = valor => valor.replace(/(\d{2})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1/$2').replace(/(\d{4})(\d)/, '$1-$2');
-
 export function corrigirNome(nome) {
-  // Regex: Remove espaço extra por apenas um | Substitui alguns caracteres por espaço
+  console.log("NOME ", nome);
+
+  const mapaCorrecao = {
+    "Ã¡": "á", "Ã¢": "â", "Ã£": "ã", "Ãª": "ê", "Ã©": "é",
+    "Ã­": "í", "Ã³": "ó", "Ã´": "ô", "Ãµ": "õ", "Ãº": "ú",
+    "Ãœ": "Ü", "Ã¼": "ü", "Ã„": "Ä", "Ã¶": "ö", "Ã§": "ç",
+    "Ã": "A", "Â": "", "â€œ": "\"", "â€": "\"", "â€˜": "'", "â€™": "'",
+    "â€“": "-", "â€”": "-", "â€": "\"", "â„¢": "", "â€¡": "", "â€º": ""
+  };
+
+  for (const [erro, correto] of Object.entries(mapaCorrecao)) {
+    nome = nome.replace(new RegExp(erro, "g"), correto);
+  }
+
+  nome = nome.replace(/[äÄ]/g, "A");
+  nome = nome.replace(/[öÖ]/g, "O");
+  nome = nome.replace(/[üÜ]/g, "U");
+
+
   nome = nome.trim().toUpperCase().replace(/[.&'"]/g, ' ').replace(/\s+/g, " ");
 
-  // Ü -> U
-  nome = nome.replace(/[äÄ]/g, "A")
-  nome = nome.replace(/[öÖ]/g, "O")
-  nome = nome.replace(/[üÜ]/g, "U")
-
+ 
   if (nome !== nome.replace(/[^A-ZÀ-ÚÃ-ÕÇ a-zã-õ]/g, "")) {
     return "";
   }
